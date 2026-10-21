@@ -1,0 +1,82 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-display: swap;
+  src: url('https://fonts.gstatic.com/s/dmsans/v15/rP2tp2ywxg089UriI5-g4vlH9VoD8CmcqZG40F9JadbnoEwAop-hSA.woff2') format('woff2');
+}
+
+:root {
+  --color-coral: #FF6B4A;
+  --color-coral-hover: #E55A3A;
+  --color-coral-active: #CC4F33;
+  --color-negro: #1C1C1E;
+  --color-blanco: #FAFAF8;
+  --color-azul: #3366FF;
+  --color-azul-hover: #2952CC;
+  --gray-900: #1C1C1E;
+  --gray-800: #2C2C2E;
+  --gray-700: #3A3A3C;
+  --gray-500: #8E8E93;
+  --gray-400: #C7C7CC;
+  --gray-300: #E0E0E0;
+  --gray-100: #F2F2F7;
+  --gray-50: #FAFAF8;
+  --color-success: #34C759;
+  --color-warning: #FF9500;
+  --color-error: #FF3B30;
+  --color-info: #007AFF;
+  --background: var(--color-blanco);
+  --foreground: var(--color-negro);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-coral: #FF6B4A;
+  --color-coral-hover: #E55A3A;
+  --color-negro: #1C1C1E;
+  --color-blanco: #FAFAF8;
+  --color-azul: #3366FF;
+  --color-gray-900: #1C1C1E;
+  --color-gray-800: #2C2C2E;
+  --color-gray-700: #3A3A3C;
+  --color-gray-500: #8E8E93;
+  --color-gray-400: #C7C7CC;
+  --color-gray-300: #E0E0E0;
+  --color-gray-100: #F2F2F7;
+  --color-gray-50: #FAFAF8;
+  --font-sans: 'DM Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+body {
+  background: var(--color-blanco);
+  color: var(--color-negro);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::selection {
+  background: rgba(255, 107, 74, 0.2);
+  color: var(--color-negro);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-azul);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
