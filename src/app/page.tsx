@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Isotipo } from "@/components/Logo";
+import Image from "next/image";
 
 const SERVICES = [
   {
@@ -61,22 +61,28 @@ const METHODOLOGY = [
 
 const PROJECTS = [
   {
-    title: "Landing page de producto",
+    title: "Mönada",
     type: "Landing page",
-    desc: "Página de aterrizaje con diseño persuasivo, formulario de contacto y estructura optimizada para conversión.",
-    tags: ["Next.js", "Tailwind CSS", "Responsive"],
+    desc: "Landing page para app social de eventos y salidas en Perú.",
+    tags: ["Next.js", "Netlify", "Responsive"],
+    image: "/proyectos/monada.jpg",
+    url: "https://appmonada.netlify.app/",
   },
   {
-    title: "Sitio web corporativo",
-    type: "Sitio WordPress",
-    desc: "Sitio informativo con múltiples secciones, panel de administración y formularios de contacto.",
-    tags: ["WordPress", "PHP", "SEO"],
+    title: "Verlez",
+    type: "Sitio web corporativo",
+    desc: "Sitio web para plataforma de administración inteligente de edificios.",
+    tags: ["Sitio web", "Diseño corporativo", "Responsive"],
+    image: "/proyectos/verlez.jpg",
+    url: "https://verlez.com/",
   },
   {
-    title: "Tienda con catálogo digital",
-    type: "E-commerce",
-    desc: "Catálogo de productos con filtros, carrito de compras, checkout y pasarela de pagos integrada.",
-    tags: ["WordPress", "WooCommerce", "Pasarela de pagos"],
+    title: "Nidu",
+    type: "Landing page",
+    desc: "Landing page para marketplace de servicios técnicos del hogar con garantía.",
+    tags: ["Landing page", "Google Play", "Responsive"],
+    image: "/proyectos/nidu.jpg",
+    url: "https://nidu.pro/",
   },
 ];
 
@@ -237,24 +243,28 @@ export default function Home() {
             Proyectos
           </p>
           <h2 className="text-3xl sm:text-4xl font-bold">
-            Ejemplos de lo que hacemos
+            Proyectos
           </h2>
           <p className="mt-4 text-gray-500 max-w-2xl">
-            Ejemplos representativos del tipo de soluciones que diseñamos y
-            desarrollamos.{" "}
-            <span className="text-xs text-gray-400">
-              (Proyectos demostrativos)
-            </span>
+            Algunos de los proyectos en los que hemos trabajado.
           </p>
 
           <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
             {PROJECTS.map((p, i) => (
-              <div
+              <a
                 key={i}
-                className="border border-gray-300 rounded-xl overflow-hidden hover:shadow-lg transition-shadow"
+                href={p.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="border border-gray-300 rounded-xl overflow-hidden hover:shadow-lg transition-shadow group"
               >
-                <div className="h-48 bg-gray-100 flex items-center justify-center">
-                  <Isotipo size={48} />
+                <div className="h-48 relative overflow-hidden">
+                  <Image
+                    src={p.image}
+                    alt={p.title}
+                    fill
+                    className="object-cover object-top group-hover:scale-105 transition-transform duration-300"
+                  />
                 </div>
                 <div className="p-6">
                   <p className="text-xs font-medium text-coral uppercase tracking-wider">
@@ -275,7 +285,7 @@ export default function Home() {
                     ))}
                   </div>
                 </div>
-              </div>
+              </a>
             ))}
           </div>
         </div>

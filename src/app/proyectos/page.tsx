@@ -1,48 +1,54 @@
 import Link from "next/link";
-import { Isotipo } from "@/components/Logo";
+import Image from "next/image";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Proyectos — IKO+ STUDIO",
   description:
-    "Ejemplos representativos del tipo de páginas web y soluciones digitales que diseñamos y desarrollamos.",
+    "Proyectos desarrollados por IKO+ STUDIO: Mönada, Verlez y Nidu.",
 };
 
 const PROJECTS = [
   {
-    title: "Landing page de producto",
+    title: "Mönada",
     type: "Landing page",
-    desc: "Página de aterrizaje con diseño enfocado en conversión, formulario de contacto integrado, secciones de beneficios y llamados a la acción claros.",
-    tags: ["Next.js", "Tailwind CSS", "Responsive"],
+    desc: "Landing page para app social de eventos y salidas en Perú. Diseño con identidad visual propia, llamados a la acción para descarga y sección de proveedores.",
+    tags: ["Next.js", "Netlify", "Responsive"],
+    image: "/proyectos/monada.jpg",
+    url: "https://appmonada.netlify.app/",
     features: [
-      "Diseño persuasivo",
-      "Formulario de contacto",
+      "Diseño con identidad de marca",
+      "CTAs de descarga",
+      "Sección de proveedores",
       "Optimización móvil",
-      "Carga rápida",
     ],
   },
   {
-    title: "Sitio web corporativo",
-    type: "Sitio WordPress",
-    desc: "Sitio informativo con múltiples secciones, panel de administración para gestionar contenido, formularios y diseño responsive.",
-    tags: ["WordPress", "PHP", "SEO básico"],
+    title: "Verlez",
+    type: "Sitio web corporativo",
+    desc: "Sitio web corporativo para plataforma de administración inteligente de edificios. Diseño oscuro con visualización 3D y navegación limpia.",
+    tags: ["Sitio web", "Diseño corporativo", "Responsive"],
+    image: "/proyectos/verlez.jpg",
+    url: "https://verlez.com/",
     features: [
-      "Panel de administración",
+      "Diseño corporativo",
+      "Visualización interactiva",
       "Múltiples secciones",
-      "Formularios de contacto",
       "Diseño responsive",
     ],
   },
   {
-    title: "Tienda con catálogo digital",
-    type: "E-commerce",
-    desc: "Sitio web con catálogo de productos, filtros por categoría, carrito de compras, proceso de checkout y pasarela de pagos integrada.",
-    tags: ["WordPress", "WooCommerce", "Pasarela de pagos"],
+    title: "Nidu",
+    type: "Landing page",
+    desc: "Landing page para marketplace de servicios técnicos del hogar con garantía. Diseño orientado a conversión con descarga de app y explicación del proceso.",
+    tags: ["Landing page", "Google Play", "Responsive"],
+    image: "/proyectos/nidu.jpg",
+    url: "https://nidu.pro/",
     features: [
-      "Catálogo con filtros",
-      "Carrito de compras",
-      "Checkout paso a paso",
-      "Pagos en línea",
+      "CTA de descarga en Google Play",
+      "Explicación del proceso",
+      "Diseño orientado a conversión",
+      "Optimización móvil",
     ],
   },
 ];
@@ -57,15 +63,10 @@ export default function ProyectosPage() {
             Proyectos
           </p>
           <h1 className="text-4xl sm:text-5xl font-bold max-w-2xl">
-            Ejemplos de lo que hacemos
+            Proyectos
           </h1>
           <p className="mt-4 text-lg text-gray-500 max-w-2xl">
-            Ejemplos representativos del tipo de soluciones que diseñamos y
-            desarrollamos para pequeños negocios y emprendedores.
-          </p>
-          <p className="mt-2 text-sm text-gray-400">
-            Proyectos demostrativos — representan el tipo de trabajo que
-            realizamos.
+            Algunos de los proyectos en los que hemos trabajado.
           </p>
         </div>
       </section>
@@ -75,12 +76,20 @@ export default function ProyectosPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {PROJECTS.map((p) => (
-              <div
+              <a
                 key={p.title}
-                className="bg-blanco border border-gray-300 rounded-xl overflow-hidden hover:shadow-lg transition-shadow"
+                href={p.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-blanco border border-gray-300 rounded-xl overflow-hidden hover:shadow-lg transition-shadow group"
               >
-                <div className="h-40 bg-negro flex items-center justify-center">
-                  <Isotipo size={48} />
+                <div className="h-48 relative overflow-hidden">
+                  <Image
+                    src={p.image}
+                    alt={p.title}
+                    fill
+                    className="object-cover object-top group-hover:scale-105 transition-transform duration-300"
+                  />
                 </div>
                 <div className="p-6">
                   <p className="text-xs font-medium text-coral uppercase tracking-wider">
@@ -121,7 +130,7 @@ export default function ProyectosPage() {
                     ))}
                   </div>
                 </div>
-              </div>
+              </a>
             ))}
           </div>
         </div>
