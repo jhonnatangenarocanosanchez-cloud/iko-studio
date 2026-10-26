@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { DM_Sans, Inter, JetBrains_Mono } from "next/font/google";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { Analytics } from "@/components/Analytics";
 import "./globals.css";
 
 const dmSans = DM_Sans({
@@ -61,6 +62,7 @@ export default function RootLayout({
       className={`${dmSans.variable} ${inter.variable} ${jetbrainsMono.variable}`}
     >
       <body className="font-[family-name:var(--font-dm-sans)] bg-blanco text-negro min-h-screen flex flex-col antialiased">
+        <Analytics />
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

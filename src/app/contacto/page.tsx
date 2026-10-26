@@ -3,24 +3,22 @@
 import { useState } from "react";
 
 const PROJECT_TYPES = [
-  "Página web corporativa",
   "Landing page",
-  "Comercio electrónico",
-  "Aplicación móvil",
-  "Sistema de gestión",
-  "Software a medida",
-  "Automatización",
-  "Inteligencia artificial",
-  "Integración de sistemas",
+  "Sitio web informativo",
+  "Catálogo de productos",
+  "Carrito y pagos en línea",
   "Mantenimiento y soporte",
-  "No estoy seguro",
+  "Otro / No estoy seguro",
 ];
+
+const FORMSPREE_ID = process.env.NEXT_PUBLIC_FORMSPREE_ID;
 
 export default function ContactoPage() {
   const [submitted, setSubmitted] = useState(false);
   const [sending, setSending] = useState(false);
+  const [error, setError] = useState(false);
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = e.currentTarget;
     const honeypot = (form.elements.namedItem("_hp_check") as HTMLInputElement)
@@ -28,10 +26,32 @@ export default function ContactoPage() {
     if (honeypot) return;
 
     setSending(true);
-    setTimeout(() => {
+    setError(false);
+
+    if (!FORMSPREE_ID) {
+      setTimeout(() => {
+        setSending(false);
+        setSubmitted(true);
+      }, 800);
+      return;
+    }
+
+    try {
+      const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+        method: "POST",
+        body: new FormData(form),
+        headers: { Accept: "application/json" },
+      });
+      if (res.ok) {
+        setSubmitted(true);
+      } else {
+        setError(true);
+      }
+    } catch {
+      setError(true);
+    } finally {
       setSending(false);
-      setSubmitted(true);
-    }, 1000);
+    }
   }
 
   if (submitted) {
@@ -219,6 +239,13 @@ export default function ContactoPage() {
             >
               {sending ? "Enviando..." : "Enviar mensaje"}
             </button>
+
+            {error && (
+              <p className="text-sm text-red-600">
+                Hubo un error al enviar el mensaje. Intenta de nuevo o
+                escríbenos directamente a contacto@ikostudio.com.
+              </p>
+            )}
           </form>
         </div>
       </section>
