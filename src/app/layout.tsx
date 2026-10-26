@@ -26,23 +26,23 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "IKO+ STUDIO — Diseño y Desarrollo de Productos Digitales",
+  title: "IKO+ STUDIO — Páginas Web y Soluciones Digitales",
   description:
-    "Diseñamos y construimos productos digitales completos — desde la estrategia hasta el código. Web, mobile, cloud y automatización. Un solo equipo.",
+    "Páginas web, landing pages y soluciones digitales para pequeños negocios y emprendedores en Lima, Perú. Diseño y desarrollo a medida.",
   keywords: [
+    "páginas web",
+    "landing page",
     "desarrollo web",
-    "aplicaciones móviles",
-    "software a medida",
-    "diseño UX UI",
-    "productos digitales",
+    "diseño web",
+    "soluciones digitales",
     "Lima",
     "Perú",
   ],
   authors: [{ name: "IKO+ STUDIO" }],
   openGraph: {
-    title: "IKO+ STUDIO — Productos digitales que funcionan y se notan",
+    title: "IKO+ STUDIO — Páginas Web y Soluciones Digitales",
     description:
-      "Diseño + código. Un solo equipo. Web, apps, software y automatización.",
+      "Páginas web y soluciones digitales para pequeños negocios y emprendedores. Lima, Perú.",
     type: "website",
     locale: "es_PE",
     siteName: "IKO+ STUDIO",

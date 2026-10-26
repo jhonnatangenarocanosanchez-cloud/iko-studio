@@ -1,36 +1,126 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# IKO+ STUDIO — Sitio Web Corporativo
 
-## Getting Started
+Sitio web corporativo de IKO+ STUDIO construido con Next.js 16, React 19 y Tailwind CSS 4.
 
-First, run the development server:
+## Stack técnico
+
+- **Framework:** Next.js 16.4.2 (App Router + Turbopack)
+- **UI:** React 19.3.0
+- **Estilos:** Tailwind CSS 4
+- **Lenguaje:** TypeScript 5
+- **Tipografía:** DM Sans, Inter, JetBrains Mono (Google Fonts via next/font)
+
+## Requisitos previos
+
+- Node.js 18.18 o superior
+- npm 9 o superior
+
+## Instalación
+
+```bash
+cd web
+npm install
+```
+
+## Desarrollo
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abre [http://localhost:3000](http://localhost:3000) en tu navegador.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Build de producción
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm start
+```
 
-## Learn More
+## Estructura del proyecto
 
-To learn more about Next.js, take a look at the following resources:
+```
+web/
+├── src/
+│   ├── app/
+│   │   ├── layout.tsx          # Layout raíz (fonts, metadata, header, footer)
+│   │   ├── page.tsx            # Homepage
+│   │   ├── globals.css         # Design tokens + Tailwind config
+│   │   ├── servicios/page.tsx  # Catálogo de servicios
+│   │   ├── proyectos/page.tsx  # Proyectos demostrativos
+│   │   ├── nosotros/page.tsx   # Sobre IKO+ STUDIO
+│   │   ├── metodologia/page.tsx # Proceso de trabajo
+│   │   ├── contacto/
+│   │   │   ├── layout.tsx      # Metadata de contacto
+│   │   │   └── page.tsx        # Formulario de contacto
+│   │   ├── privacidad/page.tsx # Política de privacidad
+│   │   └── terminos/page.tsx   # Términos y condiciones
+│   └── components/
+│       ├── Header.tsx          # Navegación responsive
+│       ├── Footer.tsx          # Footer con enlaces
+│       └── Logo.tsx            # Logo texto + Isotipo SVG
+├── package.json
+├── tsconfig.json
+├── next.config.ts
+└── next-env.d.ts
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Páginas
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| Ruta | Descripción |
+|------|-------------|
+| `/` | Homepage — hero, servicios, problemas, metodología, proyectos, beneficios, FAQ, CTA |
+| `/servicios` | Catálogo completo: web, mobile, enterprise, IA, mantenimiento |
+| `/proyectos` | Proyectos demostrativos con tecnologías y funcionalidades |
+| `/nosotros` | Propósito, misión, visión, valores, enfoque |
+| `/metodologia` | Fases del proceso: discovery, diseño, desarrollo, QA, soporte |
+| `/contacto` | Formulario con selector de proyecto, honeypot anti-spam, aviso de privacidad |
+| `/privacidad` | Política de privacidad (Ley 29733, Perú) |
+| `/terminos` | Términos y condiciones de uso |
 
-## Deploy on Vercel
+## Despliegue
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+El sitio genera páginas estáticas (Static Site Generation). Compatible con:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Vercel** (recomendado): `vercel deploy`
+- **Cualquier hosting Node.js**: ejecutar `npm run build && npm start`
+- **Exportación estática**: agregar `output: 'export'` en `next.config.ts` para generar HTML estático
+
+## Variables de entorno
+
+No se requieren variables de entorno para el funcionamiento básico del sitio.
+
+Crear un archivo `.env.local` si se necesita en el futuro:
+
+```bash
+cp .env.example .env.local
+```
+
+## Verificación realizada
+
+- [x] Build de producción sin errores
+- [x] TypeScript compila sin errores
+- [x] 8 páginas generadas correctamente
+- [x] Navegación funcional (desktop y mobile)
+- [x] Formulario de contacto con validación
+- [x] Honeypot anti-spam implementado
+- [x] Aviso de privacidad en formulario
+- [x] Metadata SEO en todas las páginas
+- [x] Responsive design
+- [x] Design tokens de IKO+ Brand Kit aplicados
+- [x] Contenido basado en Brand Book y Blueprint
+
+## Pendientes
+
+- [ ] Integración con backend real para el formulario de contacto (actualmente simula envío)
+- [ ] Favicon personalizado con isotipo IKO+
+- [ ] Imágenes reales para proyectos (actualmente usan isotipo como placeholder)
+- [ ] Analytics (Google Analytics o Plausible)
+- [ ] Sitemap.xml y robots.txt
+- [ ] Pruebas de accesibilidad con herramienta automatizada
+- [ ] Optimización Lighthouse
+
+## Documentación del proyecto
+
+- [Guía técnica del sitio](../DOCUMENTACION/README.md): arquitectura, despliegue, formulario y lista de lanzamiento.
+- [Índice general de IKO+ STUDIO](../../06_GESTION/INDICE_DOCUMENTACION.md): marca, negocio, recursos y gobernanza documental.
